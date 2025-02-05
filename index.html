@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Q Esp - Asociación de Programadores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #000;
+            color: white;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .navbar {
+            background-color: rgba(44, 62, 80, 0.9);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: #FFD700;
+            position: relative;
+            clip-path: polygon(
+                50% 0%, 63.5% 24%, 85.5% 14%, 79% 39%,
+                100% 50%, 79% 61%, 85.5% 85%, 63.5% 76%,
+                50% 100%, 36.5% 76%, 14.5% 85%, 21% 61%,
+                0% 50%, 21% 39%, 14.5% 14%, 36.5% 24%
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid white;
+        }
+
+        .logo::after {
+            content: 'Q';
+            font-size: 4rem;
+            color: #ff0000;
+            font-weight: bold;
+            font-family: 'Arial Black', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 100px 2rem 2rem;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .active-tab {
+            display: block;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #e74c3c;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        .highlight {
+            color: #FFD700 !important;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .proyectos-title {
+            color: #00f;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .proyectos-list {
+            list-style-type: none;
+            text-align: center;
+            padding: 0;
+        }
+
+        .email-link {
+            color: #ff0000 !important;
+            font-size: 1.5rem;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
+            .logo::after {
+                font-size: 3rem;
+            }
+            .nav-links {
+                margin-top: 1rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links a {
+                margin: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <h1>Star Q Esp</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#inicio" class="tab-link active">Inicio</a>
+                <a href="#software" class="tab-link">Nuestro Software</a>
+                <a href="#quienes" class="tab-link">Quienes Somos</a>
+                <a href="#contacto" class="tab-link">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="inicio" class="tab-content active-tab">
+        <div class="section">
+            <h2>Bienvenidos a Star Q Esp</h2>
+            <p>Asociación de desarrollo ético</p>
+            <p>Somos una asociación que hace software, no ponemos anuncios, ni utilizamos los datos de los usuarios</p>
+            <p>Con nosotros juegas sin pagar con nada</p>
+        </div>
+    </div>
+
+    <div id="software" class="tab-content">
+        <div class="section">
+            <h2>Nuestro Software</h2>
+            <p class="highlight">Si está interesado en algún producto para su empresa, póngase en contacto con nosotros</p>
+            <p class="proyectos-title">Proyectos destacados:</p>
+            <ul class="proyectos-list">
+                <li style="color: #FF6666;">Silbiditos</li>
+                <li style="color: #FFB366;">Carreras espaciales</li>
+                <li style="color: #FFD966;">Lanzarote patoso</li>
+                <li style="color: #B3FF66;">Lucha medieval</li>
+                <li style="color: #66FFB3;">Rolmaster</li>
+                <li style="color: #66D9FF;">Escuela online</li>
+                <li style="color: #6666FF;">Apuesta o muere</li>
+                <li style="color: #B366FF;">Contacto con tacto</li>
+                <li style="color: #FF66D9;">Cornuqueitor</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="quienes" class="tab-content">
+        <div class="section">
+            <h2>Quienes Somos</h2>
+            <p class="integrantes-title">Nuestro equipo:</p>
+            <ul class="proyectos-list">
+                <li style="color: #FF4444;">El picacodigo nocturno</li>
+                <li style="color: #44FF44;">La científica Loca</li>
+                <li style="color: #4444FF;">El jovencito frankideas</li>
+                <li style="color: #FF44FF;">La bruja novata</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="contacto" class="tab-content">
+        <div class="section">
+            <h2>Contacto</h2>
+            <p>Para cualquier contacto escríbenos a:</p>
+            <a href="mailto:starqesp@gmail.com" class="email-link">starqesp@gmail.com</a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        let animationId;
+        
+        const tabColors = {
+            'inicio': 120,   // Verde
+            'software': 0,   // Rojo
+            'quienes': 60,   // Amarillo
+            'contacto': 270  // Morado
+        };
+
+        function initMatrix(color) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const chars = '01';
+            const fontSize = 16;
+            const columns = canvas.width / fontSize;
+            let drops = Array(Math.floor(columns)).fill(1);
+
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = `hsl(${color}, 100%, 50%)`;
+                ctx.font = fontSize + 'px monospace';
+
+                for(let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            if(animationId) clearInterval(animationId);
+            animationId = setInterval(draw, 100); // Efecto más lento
+        }
+
+        // Inicializar con color de Inicio
+        initMatrix(tabColors['inicio']);
+
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                
+                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active-tab'));
+                
+                link.classList.add('active');
+                document.getElementById(targetId).classList.add('active-tab');
+                
+                // Cambiar color del Matrix
+                initMatrix(tabColors[targetId]);
+            });
+        });
+    </script>
+</body>
+</html>
